@@ -32,10 +32,23 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <header className="header">
-        <span className="header-text">Task Manager</span>
-        <button className="btn" onClick={() => setShowForm(true)}>
-          Create Task
-        </button>
+        <div className="header-left">
+          <span className="header-text">Task Manager</span>
+        </div>
+        <div className="header-right">
+          <button className="btn" onClick={() => setShowForm(true)}>
+            Create Task
+          </button>
+        </div>
+
+        <div className="header-center">
+          <ul className='tsk-links'>
+            <li>All Tasks</li>
+            <li>Pending</li>
+            <li>Completed</li>
+          </ul>
+        </div>
+
       </header>
 
       {showForm && (
@@ -93,7 +106,7 @@ function App() {
 
             <div className="form-buttons">
               <button type="submit" className="cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
-              <button type="submit" className="save-btn" onClick={() => handleSubmit()}>Save</button>
+              <button type="submit" className="save-btn">Save</button>
             </div>
           </form>
         </div>

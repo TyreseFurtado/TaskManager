@@ -11,7 +11,7 @@ body {
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 70px;
   width: 100%;
@@ -23,9 +23,40 @@ body {
   background: transparent;
 }
 
+.header-left {
+  flex: 0 0 auto;
+  left: 20px;
+}
+
+.header-right {
+  flex: 0 0 auto;
+}
+
+.header-center {
+  flex: 1 1 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.tsk-links li {
+  cursor: pointer;
+}
+
+.tsk-links li:hover {
+  color: #6a0dad;
+}
+
+.tsk-links {
+  display: flex;
+  gap: 140px;
+  list-style: none;
+  font-size: 20px;
+}
+
 .btn {
   position: absolute;
-  right: 60px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   background-color: #6a0dad;
