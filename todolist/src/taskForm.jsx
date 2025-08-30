@@ -16,7 +16,6 @@ function TaskForm({ onSubmit, onCancel }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(formData);
-        // Reset form after submission
         setFormData({ title: "", description: "", priority: "", dueDate: "" });
     };
 

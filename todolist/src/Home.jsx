@@ -5,8 +5,7 @@ import './Home.css'
 import TaskForm from './taskForm.jsx'
 import { useNavigate } from 'react-router-dom'
 
-function Home() {
-  const [tasks, setTasks] = useState([]);
+function Home({ tasks, setTasks }) {
   const [showForm, setShowForm] = useState(false);
 
   const [formData, setFormData] = useState({
