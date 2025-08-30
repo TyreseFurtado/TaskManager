@@ -11,7 +11,7 @@ function Home({ tasks, setTasks }) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    priority: "",
+    status: "",
     dueDate: "",
   });
 
@@ -22,7 +22,7 @@ function Home({ tasks, setTasks }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setTasks([...tasks, formData]);
-    setFormData({ title: "", description: "", priority: "", dueDate: "" });
+    setFormData({ title: "", description: "", status: "", dueDate: "" });
     setShowForm(false);
   };
 
@@ -52,6 +52,7 @@ function Home({ tasks, setTasks }) {
           <ul className='tsk-links'>
             <li onClick={navigate}>All Tasks</li>
             <li>Pending</li>
+            <li>In Progress</li>
             <li>Completed</li>
           </ul>
         </div>

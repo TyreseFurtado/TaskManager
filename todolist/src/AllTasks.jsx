@@ -17,6 +17,7 @@ function AllTasks({ tasks }) {
                     <ul className='tsk-links'>
                         <li onClick={navigate}>Home</li>
                         <li>Pending</li>
+                        <li>In Progress</li>
                         <li>Completed</li>
                     </ul>
                 </div>
@@ -30,7 +31,7 @@ function AllTasks({ tasks }) {
                             <h2 className="task-title">{task.title}</h2>
                             <p className="task-desc">{task.description}</p>
                             <p className="task-meta">
-                                Priority: {task.priority} | Due: {task.dueDate}
+                                Status: {task.status} | Due: {task.dueDate}
                             </p>
                         </li>
                     ))}

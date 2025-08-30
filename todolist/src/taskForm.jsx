@@ -5,7 +5,7 @@ function TaskForm({ onSubmit, onCancel }) {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        priority: "",
+        status: "",
         dueDate: "",
     });
 
@@ -16,7 +16,7 @@ function TaskForm({ onSubmit, onCancel }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(formData);
-        setFormData({ title: "", description: "", priority: "", dueDate: "" });
+        setFormData({ title: "", description: "", status: "", dueDate: "" });
     };
 
     return (
@@ -46,17 +46,17 @@ function TaskForm({ onSubmit, onCancel }) {
                 </label>
 
                 <label>
-                    Priority:
+                    Status:
                     <select
-                        name="priority"
-                        value={formData.priority}
+                        name="status"
+                        value={formData.status}
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Select Priority</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
+                        <option value=""></option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
                     </select>
                 </label>
 
