@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './taskForm.css'
+import AllTasks from './AllTasks.jsx';
 
 function TaskForm({ onSubmit, onCancel }) {
     const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ function TaskForm({ onSubmit, onCancel }) {
         dueDate: "",
     });
 
+    const [tasks, setTasks] = useState([]);
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -17,7 +20,9 @@ function TaskForm({ onSubmit, onCancel }) {
         e.preventDefault();
         onSubmit(formData);
         setFormData({ title: "", description: "", status: "", dueDate: "" });
+        setTasks(prev => [...prev, formData]);
     };
+
 
     return (
         <div className='form-overlay'>

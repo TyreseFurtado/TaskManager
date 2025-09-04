@@ -1,15 +1,24 @@
 import React from 'react';
 import './AllTasks.css'
 import { useNavigate } from 'react-router-dom';
+import TaskForm from './taskForm';
 
 
-function AllTasks({ tasks }) {
+function AllTasks({ tasks, onDelete }) {
+
+    const [openIndex, setOpenIndex] = React.useState(null);
 
     const nav = useNavigate()
 
     const navigate = () => {
         nav('/')
     }
+
+    const handleEdit = () => {
+
+    }
+
+
     return (
         <div className="AllTasksPage">
             <header className="header">
@@ -33,6 +42,12 @@ function AllTasks({ tasks }) {
                             <p className="task-meta">
                                 Status: {task.status} | Due: {task.dueDate}
                             </p>
+                            <button className="options-btn" onClick={() => setOpenIndex(openIndex === index ? null : index)}> ⋮</button>
+                            <div className={`options-menu ${openIndex === index ? "show" : ""}`}>
+                                <button onClick={() => handleEdit(task)}>Edit</button>
+                                <button onClick={() => onDelete(index)}>Delete</button>
+                            </div>
+
                         </li>
                     ))}
                 </ul>
