@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './taskForm.css'
 import AllTasks from './AllTasks.jsx';
 
-function TaskForm({ onSubmit, onCancel }) {
-    const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        status: "",
-        dueDate: "",
-    });
+function TaskForm({ onSubmit, onCancel, initialData }) {
+    const [formData, setFormData] = useState(
+        initialData || {
+            title: "",
+            description: "",
+            status: "",
+            dueDate: "",
+        });
 
     const [tasks, setTasks] = useState([]);
 
@@ -19,9 +20,14 @@ function TaskForm({ onSubmit, onCancel }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(formData);
-        setFormData({ title: "", description: "", status: "", dueDate: "" });
-        setTasks(prev => [...prev, formData]);
+        if (!initialData) {
+            setFormData({ title: "", description: "", status: "", dueDate: "" });
+        }
     };
+
+    useEffect(() => {
+        if (initialData) setFormData(initialData);
+    }, [initialData]);
 
 
     return (

@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import TaskForm from './taskForm';
 
 
-function AllTasks({ tasks, onDelete }) {
+function AllTasks({ tasks, onDelete, onUpdate }) {
 
     const [openIndex, setOpenIndex] = React.useState(null);
+    const [editingTask, setEditingTask] = React.useState(null);
 
     const nav = useNavigate()
 
@@ -14,10 +15,14 @@ function AllTasks({ tasks, onDelete }) {
         nav('/')
     }
 
-    const handleEdit = () => {
-
+    const handleEdit = (task, index) => {
+        setEditingTask({ ...task, index })
     }
 
+    const handleUpdate = (updatedTask) => {
+        onUpdate(updatedTask, editingTask.index);
+        setEditingTask(null);
+    }
 
     return (
         <div className="AllTasksPage">
@@ -44,13 +49,21 @@ function AllTasks({ tasks, onDelete }) {
                             </p>
                             <button className="options-btn" onClick={() => setOpenIndex(openIndex === index ? null : index)}> ⋮</button>
                             <div className={`options-menu ${openIndex === index ? "show" : ""}`}>
-                                <button onClick={() => handleEdit(task)}>Edit</button>
+                                <button onClick={() => handleEdit(task, index)}>Edit</button>
                                 <button onClick={() => onDelete(index)}>Delete</button>
                             </div>
 
                         </li>
                     ))}
                 </ul>
+            )}
+
+            {editingTask && (
+                <TaskForm
+                    initialData={editingTask}
+                    onSubmit={handleUpdate}
+                    onCancel={() => setEditingTask(null)}
+                />
             )}
         </div>
     );

@@ -13,11 +13,17 @@ function App() {
         setTasks(prevTasks => prevTasks.filter((_, i) => i !== index));
     };
 
+    const handleUpdateTask = (updatedTask, index) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((t, i) => (i === index ? updatedTask : t))
+        );
+    };
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home tasks={tasks} setTasks={setTasks} />} />
-                <Route path="/AllTasks" element={<AllTasks tasks={tasks} onDelete={handleDeleteTask} />} />
+                <Route path="/AllTasks" element={<AllTasks tasks={tasks} onUpdate={handleUpdateTask} onDelete={handleDeleteTask} />} />
             </Routes>
         </BrowserRouter>
 
