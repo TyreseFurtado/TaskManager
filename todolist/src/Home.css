@@ -36,6 +36,7 @@ body {
   text-align: center;
   display: flex;
   justify-content: center;
+  color: white
 }
 
 .tsk-links li {

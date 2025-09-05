@@ -51,9 +51,6 @@ function Home({ tasks, setTasks }) {
         <div className="header-center">
           <ul className='tsk-links'>
             <li onClick={navigate}>All Tasks</li>
-            <li>Pending</li>
-            <li>In Progress</li>
-            <li>Completed</li>
           </ul>
         </div>
 

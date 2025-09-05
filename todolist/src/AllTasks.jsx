@@ -8,6 +8,7 @@ function AllTasks({ tasks, onDelete, onUpdate }) {
 
     const [openIndex, setOpenIndex] = React.useState(null);
     const [editingTask, setEditingTask] = React.useState(null);
+    const [filterStatus, setFilterStatus] = React.useState("");
 
     const nav = useNavigate()
 
@@ -24,23 +25,38 @@ function AllTasks({ tasks, onDelete, onUpdate }) {
         setEditingTask(null);
     }
 
+    const filteredTasks = filterStatus ? tasks.filter(task => task.status === filterStatus) : tasks;
+
+
+
     return (
         <div className="AllTasksPage">
             <header className="header">
                 <div className="header-center">
                     <ul className='tsk-links'>
                         <li onClick={navigate}>Home</li>
-                        <li>Pending</li>
-                        <li>In Progress</li>
-                        <li>Completed</li>
                     </ul>
+                </div>
+                <div className="header-right">
+                    <select className="filter-select"
+                        value={filterStatus}
+                        onChange={(e) => {
+                            setFilterStatus(e.target.value);
+                            handleFiltration(e.target.value);
+                        }}
+                    >
+                        <option value="">Filter by Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
                 </div>
             </header>
             {tasks.length === 0 ? (
                 <p>No tasks yet. Go create one!</p>
             ) : (
                 <ul className="task-list">
-                    {tasks.map((task, index) => (
+                    {filteredTasks.map((task, index) => (
                         <li key={index} className="task-card">
                             <h2 className="task-title">{task.title}</h2>
                             <p className="task-desc">{task.description}</p>
