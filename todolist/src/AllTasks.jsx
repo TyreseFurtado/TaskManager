@@ -53,7 +53,7 @@ function AllTasks({ tasks, onDelete, onUpdate }) {
                 </div>
             </header>
             {tasks.length === 0 ? (
-                <p>No tasks yet. Go create one!</p>
+                <p className = "notifier">No tasks yet. Go create one!</p>
             ) : (
                 <ul className="task-list">
                     {filteredTasks.map((task, index) => (

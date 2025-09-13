@@ -138,3 +138,7 @@
     transition: background-color 0.3s ease;
     font-family: Poppins, sans-serif;
 }
+
+.notifier {
+    color: white;
+}
