@@ -27,8 +27,6 @@ function AllTasks({ tasks, onDelete, onUpdate }) {
 
     const filteredTasks = filterStatus ? tasks.filter(task => task.status === filterStatus) : tasks;
 
-
-
     return (
         <div className="AllTasksPage">
             <header className="header">
@@ -42,7 +40,6 @@ function AllTasks({ tasks, onDelete, onUpdate }) {
                         value={filterStatus}
                         onChange={(e) => {
                             setFilterStatus(e.target.value);
-                            handleFiltration(e.target.value);
                         }}
                     >
                         <option value="">Filter by Status</option>
