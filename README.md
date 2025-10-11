@@ -35,7 +35,7 @@ Make sure you have Node.js and npm installed on your machine.
 
 1.  Clone the repository to your local machine:
     ```sh
-    git clone [https://github.com/TyreseFurtado/TaskManager](https://github.com/TyreseFurtado/TaskManager)
+    git clone https://github.com/TyreseFurtado/TaskManager
     ```
 2.  Navigate into the project directory:
     ```sh
